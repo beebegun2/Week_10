@@ -32,7 +32,7 @@ onClick('new-team', () => {
 
 function onClick(id, action) {
     let element = document.getElementById(id);
-    element.addEventListener('Click', action);
+    element.addEventListener('click', action);
     return element;
 }
 
@@ -43,15 +43,15 @@ function getValue(id) {
 function drawDOM() {
     let teamDiv = document.getElementById('teams');
     clearElement(teamDiv);
-    for (Team of teams) {
+    for (team of teams) {
         let table = createTeamTable(team);
         let title = document.createElement('h2');
-        title.innerHTML = Team.name;
+        title.innerHTML = team.name;
         title.appendChild(createDeleteTeamButton(team));
         teamDiv.appendChild(title);
         teamDiv.appendChild(table);
-        for (Member of Team.members) {
-            createMemberRow(Team, Member);
+        for (member of team.members) {
+            createMemberRow(team, table, member);
         }
     }
 }
