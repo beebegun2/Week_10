@@ -6,32 +6,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Week 10 App</title>
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
-  
+<style>
+    div {
+        border-style: solid;
+        border-color: grey;
+        background-color: grey;
+        padding: 2px;
+        position: relative;
+        }
+
+    body {
+        background-image: url(pngtree-black-horror-skull-halloween-picture-image_1067531.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: relative;
+    }
+</style>
 </head>
-<body class="container">
+
+<body class="container-fluid">
 
     <br>
 
-    <div class="card">
-        <div class="card-body">
-            <div class="row">
-                <div calss="col-sm">
-                    <div class="form-group">
-                        <label for="new-team-name">Team Name</label>
-                        <input type="text" class="form-control" id="new-team-name">
+    <div class="row justify-content-center align-items-center">
+        <div class="autosized">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-lg">
+                            <div class="form-group">
+                                <label for="new-day-name">Day of the Week</label>
+                                <input type="text" class="form-control" id="new-day-name">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-           <button id="new-team" class="btn btn-primary form-control">Create</button>
-        </div>
+            <button id="new-day" class="btn btn-secondary form-control">Create</button>
+    </div>
    <br>
 
 
-    <div id="teams"></div>
+    <div id="days"></div>
 
-    <script src="week10.js"></script>
-
+    <script src="week10Assignment.js"></script>
 
 
 
