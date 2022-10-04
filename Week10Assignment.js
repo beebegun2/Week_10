@@ -1,9 +1,9 @@
 console.log("inside Week10Assignment.js");
-
+//create a class for your meals and what your having
 class Meal {
-    constructor(name, position) {
+    constructor(name, eating) {
         this.name = name;
-        this.position = position;
+        this.eating = eating;
     }
 }
 
@@ -65,7 +65,7 @@ function createMealRow(day, table, meal) {
     console.log("inside createMealRow");
 let row = table.insertRow(2);
 row.insertCell(0).innerHTML = meal.name;
-row.insertCell(1).innerHTML = meal.position;
+row.insertCell(1).innerHTML = meal.eating;
 let actions = row.insertCell(2);
 actions.appendChild(createDeleteRowButton(day, meal));
 }
@@ -102,7 +102,7 @@ function createNewMealButton(day) {
 btn.className = 'btn btn-secondary';
 btn.innerHTML = 'Create';
 btn.onclick = () => {
-    day.meals.push(new Meal(getValue(`name-input-${day.id}`), getValue(`position-input-${day.id}`)));
+    day.meals.push(new Meal(getValue(`name-input-${day.id}`), getValue(`eating-input-${day.id}`)));
     drawDOM();
     };
     return btn;
@@ -114,29 +114,29 @@ function createDayTable(day) {
     table.setAttribute('class', 'table table-dark table-striped');
     let row = table.insertRow(0);
     let nameColumn = document.createElement('th');
-    let positionColumn = document.createElement('th');
+    let eatingColumn = document.createElement('th');
     nameColumn.innerHTML = 'Which Meal Time';
-    positionColumn.innerHTML = 'What Your Having';
+    eatingColumn.innerHTML = 'What Your Having';
     row.appendChild(nameColumn);
-    row.appendChild(positionColumn);
+    row.appendChild(eatingColumn);
     let formRow = table.insertRow(1);
     let nameTh = document.createElement('th');
-    let positionTh = document.createElement('th');
+    let eatingTh = document.createElement('th');
     let createTh = document.createElement('th');
     let nameInput = document.createElement('input');
     nameInput.setAttribute('id', `name-input-${day.id}`);
     nameInput.setAttribute('type', 'text');
     nameInput.setAttribute('class', 'form-control');
-    let positionInput = document.createElement('input');
-    positionInput.setAttribute('id', `position-input-${day.id}`);
-    positionInput.setAttribute('type', 'text');
-    positionInput.setAttribute('class', 'form-control');
+    let eatingInput = document.createElement('input');
+    eatingInput.setAttribute('id', `eating-input-${day.id}`);
+    eatingInput.setAttribute('type', 'text');
+    eatingInput.setAttribute('class', 'form-control');
     let newMealButton = createNewMealButton(day);
     nameTh.appendChild(nameInput);
-    positionTh.appendChild(positionInput);
+    eatingTh.appendChild(eatingInput);
     createTh.appendChild(newMealButton);
     formRow.appendChild(nameTh);
-    formRow.appendChild(positionTh);
+    formRow.appendChild(eatingTh);
     formRow.appendChild(createTh);
     return table;
 }
