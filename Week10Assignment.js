@@ -1,12 +1,12 @@
 console.log("inside Week10Assignment.js");
-//create a class for your meals and what your having
+//create a class and constructor for your meals and what your eating
 class Meal {
     constructor(name, eating) {
         this.name = name;
         this.eating = eating;
     }
 }
-
+//create a class and constructor for the day you are eating and the ability to add and delete the meal
 class Day {
     constructor(id, name) {
         this.id = id;
@@ -27,11 +27,13 @@ class Day {
 let days = []; 
 let dayId = 0;
 
+//create the function of creating the day of week capability
 onClick('new-day', () => {
     days.push(new Day(dayId++, getValue('new-day-name')));
     drawDOM();
 });
 
+//create the function of the action once clicked
 function onClick(id, action) {
     console.log("inside onClick");
     let element = document.getElementById(id);
@@ -39,11 +41,13 @@ function onClick(id, action) {
     return element;
 }
 
+//create the function of what is being returned
 function getValue(id) {
     console.log("inside getValue");
     return document.getElementById(id).value;
 }
 
+//create the DOM
 function drawDOM() {
     console.log("inside drawDOM");
     let dayDiv = document.getElementById('days');
@@ -61,6 +65,7 @@ function drawDOM() {
     }
 }
 
+//create the Meal row and cells for name of meal and what your eating
 function createMealRow(day, table, meal) {
     console.log("inside createMealRow");
 let row = table.insertRow(2);
@@ -70,6 +75,7 @@ let actions = row.insertCell(2);
 actions.appendChild(createDeleteRowButton(day, meal));
 }
 
+//create the option to delete the row via a button
 function createDeleteRowButton(day, meal) {
     console.log("inside createDeleteRowButton");
     let btn = document.createElement('button');
@@ -83,6 +89,7 @@ function createDeleteRowButton(day, meal) {
     return btn;
 }
 
+//create the button to delete the day 
 function createDeleteDayButton(day) {
     console.log("inside createDeleteDayButton");
     let btn = document.createElement('button');
@@ -96,6 +103,7 @@ function createDeleteDayButton(day) {
     return btn;
 }
 
+//create the button for the new meal
 function createNewMealButton(day) {
     console.log("inside createNewMealButton");
     let btn = document.createElement('button');
@@ -108,6 +116,7 @@ btn.onclick = () => {
     return btn;
 }
 
+//create the table for the each day created
 function createDayTable(day) {
     console.log("inside createDayTable");
     let table = document.createElement('table');
@@ -141,6 +150,7 @@ function createDayTable(day) {
     return table;
 }
 
+//clear elements
 function clearElement(element) {
     console.log("inside clearElement");
     while(element.firstChild) {
