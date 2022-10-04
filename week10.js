@@ -10,7 +10,6 @@ class Team {
         this.id = id;
         this.name = name;
         this.members = []
-
     }
 
     addMember(member) {
@@ -18,7 +17,7 @@ class Team {
     }
 
     deleteMember(member) {
-        let.index = this.members.indexOf(member);
+        let index = this.members.indexOf(member);
         this.members.splice(index, 1);
     }
 }
@@ -44,15 +43,15 @@ function getValue(id) {
 function drawDOM() {
     let teamDiv = document.getElementById('teams');
     clearElement(teamDiv);
-    for (team of teams) {
+    for (Team of teams) {
         let table = createTeamTable(team);
         let title = document.createElement('h2');
-        title.innerHTML = team.name;
+        title.innerHTML = Team.name;
         title.appendChild(createDeleteTeamButton(team));
         teamDiv.appendChild(title);
         teamDiv.appendChild(table);
-        for (member of team.members) {
-            createMemberRow(team, member);
+        for (Member of Team.members) {
+            createMemberRow(Team, Member);
         }
     }
 }
@@ -94,8 +93,10 @@ function createNewMemberButton(team) {
 btn.className = 'btn btn-primary';
 btn.innerHTML = 'Create';
 btn.onClick = () => {
-    team.members.push(new Member(getValue(`name-input-${team.id}`), ))
+    team.members.push(new Member(getValue(`name-input-${team.id}`), getValue(`position-input-${team.id}`)));
+    drawDOM();
     };
+    return btn;
 }
 
 function createTeamTable(team) {
@@ -105,18 +106,18 @@ function createTeamTable(team) {
     let nameColumn = document.createElement('th');
     let positionColumn = document.createElement('th');
     nameColumn.innerHTML = 'Name'
-    posistionColumn.innerHTML = 'Position';
+    positionColumn.innerHTML = 'Position';
     row.appendChild(nameColumn);
     row.appendChild(positionColumn);
     let formRow = table.insertRow(1);
     let nameTh = document.createElement('th');
     let positionTh = document.createElement('th');
     let createTh = document.createElement('th');
-    let nameInput - document.createElement('input');
+    let nameInput = document.createElement('input');
     nameInput.setAttribute('id', `name-input-${team.id}`);
     nameInput.setAttribute('type', 'text');
     nameInput.setAttribute('class', 'form-control');
-    let positionInput - document.createElement('input');
+    let positionInput = document.createElement('input');
     positionInput.setAttribute('id', `position-input-${team.id}`);
     positionInput.setAttribute('type', 'text');
     positionInput.setAttribute('class', 'form-control');
